@@ -1,0 +1,4 @@
+defaults:
+  - encoder: dropout_01_6blocks
+
+projection_dim: 128

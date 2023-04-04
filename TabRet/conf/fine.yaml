@@ -1,0 +1,27 @@
+defaults:
+  - _self_
+  - model: tabret
+  - fine_conf: ret/tabret
+  - scheduler: cosine_fine
+
+data: DiabetesL2Diabetes
+data_dir: datasets
+
+epochs: 200
+batch_size: 32
+eval_batch_size: 1024
+
+drop_last: False
+
+lr: 5e-4
+
+mixed_fp16: false
+
+patience: 20
+n_retains: 1
+store: false
+
+seed: 42
+gpuid: 0
+
+fine_num: 100

@@ -1,0 +1,5 @@
+trainer: SCARFOODTrainer
+
+pre_path: null
+
+para_freeze: true

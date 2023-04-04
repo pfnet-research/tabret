@@ -1,0 +1,3 @@
+defaults:
+  - encoder: dropout_01_6blocks
+  - decoder: default_1blocks

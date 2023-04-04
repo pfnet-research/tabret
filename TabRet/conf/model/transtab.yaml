@@ -1,0 +1,2 @@
+defaults:
+  - encoder: transtab_2blocks

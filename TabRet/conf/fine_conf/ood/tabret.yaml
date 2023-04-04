@@ -1,0 +1,9 @@
+trainer: TabRetOODTrainer
+
+pre_path: null
+trans_path: null
+
+para_freeze: true
+trans_freeze: true
+
+except_decoder: false

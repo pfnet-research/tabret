@@ -1,0 +1,5 @@
+trainer: SCARFIIDTrainer
+
+pre_path: null
+
+para_freeze: true

@@ -1,0 +1,13 @@
+trainer: LRTrainer
+
+data: DiabetesL2Diabetes
+data_dir: datasets
+
+fine_num: 100
+patience: 20
+
+use_storage: false
+study_name: tmp-${now:%Y-%m-%d}-${now:%H-%M-%S}
+n_trials: 500
+
+seed: 42

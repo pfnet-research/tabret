@@ -1,0 +1,10 @@
+trainer: SCARFPreTrainer
+
+mask_ratio: 0.6
+temperature: 1.0
+
+column_shuffle:
+  ratio: 0.0 # null or float[0, 1)
+  mode: shuffle # shuffle, unshuffle, concat
+
+all_gather: false

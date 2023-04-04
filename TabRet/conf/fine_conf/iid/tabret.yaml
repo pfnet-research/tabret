@@ -1,0 +1,10 @@
+trainer: TabRetIIDTrainer
+
+pre_path: null
+trans_path: null
+
+para_freeze: true
+trans_freeze: true
+mask_token_freeze: true
+
+except_decoder: false

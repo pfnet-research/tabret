@@ -1,0 +1,17 @@
+trainer: TabRetokenOODTrainer
+
+ret:
+  epochs: 200
+  batch_size: 32
+  patience: 50
+  lr: 1.5e-3
+  mask_ratio: 0.5
+
+pre_path: null
+trans_path: null
+
+para_freeze: true
+trans_freeze: true
+mask_token_freeze: true
+
+except_decoder: false

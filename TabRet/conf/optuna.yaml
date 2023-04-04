@@ -1,0 +1,5 @@
+defaults:
+  - fine
+
+study_name: tmp-${now:%Y-%m-%d}-${now:%H-%M-%S}
+use_storage: False

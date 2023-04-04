@@ -1,0 +1,10 @@
+trainer: TrasTabPreTrainer
+
+num_partition: 2
+overlap_ratio: 0.1
+
+all_gather: false
+
+
+column_shuffle:
+  ratio: null # null or float[0, 1)

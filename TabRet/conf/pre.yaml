@@ -1,0 +1,28 @@
+defaults:
+  - _self_
+  - model: tabret
+  - pre_conf: tabret
+  - scheduler: cosine
+
+data: DiabetesL
+data_dir: datasets
+
+epochs: 1000
+batch_size: 4096
+eval_batch_size: 4096
+
+num_workers: 3
+drop_last: False
+
+lr: 1.5e-5
+
+mixed_fp16: false
+
+patience: 1000
+n_retains: 1
+store_interval: 1000
+
+seed: 42
+gpuid: 0
+
+fine_num: 100

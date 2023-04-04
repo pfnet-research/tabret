@@ -1,0 +1,6 @@
+name: Cosine
+
+param:
+  lr_min: 1e-6
+  warmup_t: 40
+  warmup_lr_init: 1e-6

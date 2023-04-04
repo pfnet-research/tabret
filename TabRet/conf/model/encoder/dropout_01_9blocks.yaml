@@ -1,0 +1,17 @@
+n_blocks: 9
+residual_dropout: 0.0
+ffn_d_hidden: 768
+d_token: 576
+attention_dropout: 0.1
+ffn_dropout: 0.1
+attention_n_heads: 8
+attention_initialization: kaiming
+ffn_activation: ReGLU
+attention_normalization: LayerNorm
+ffn_normalization: LayerNorm
+prenormalization: True
+first_prenormalization: False
+last_layer_query_idx: null
+n_tokens: null
+kv_compression_ratio: null
+kv_compression_sharing: null
