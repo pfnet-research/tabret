@@ -10,6 +10,7 @@ The experiments in our paper were conducted using the following environment:
 
 - Operating System: Ubuntu 22.04.1 LTS
 - CUDA compiler version: 11.7
+- Python 3.9.12
 
 ## Installation
 
