@@ -1,31 +1,31 @@
 import numpy as np
 import pandas as pd
 
-from .diabetesl_base import DiabetesLBaseDataFrame
+from .brfss_base import BRFSSBaseDataFrame
 
 
-class DiabetesL2Diabetes(DiabetesLBaseDataFrame):
+class HDHI(BRFSSBaseDataFrame):
     dim_out = 1
 
     all_columns = [
-        "Diabetes_binary",
+        "HeartDiseaseorAttack",
         "HighBP",
         "HighChol",
         "CholCheck",
-        "BMI",
-        "SMOKE100",
-        "CVDSTRK3",
-        "HeartDiseaseorAttack",
-        "_TOTINDA",
+        "Diabetes",
         "Fruits",
         "Veggies",
         "HvyAlcoholConsump",
-        "HLTHPLN1",
-        "MEDCOST",
-        "GENHLTH",
         "MentHlth",
         "PhysHlth",
         "DiffWalk",
+        "_BMI5",
+        "SMOKE100",
+        "CVDSTRK3",
+        "_TOTINDA",
+        "HLTHPLN1",
+        "MEDCOST",
+        "GENHLTH",
         "SEX",
         "_AGEG5YR",
         "EDUCA",
@@ -40,19 +40,19 @@ class DiabetesL2Diabetes(DiabetesLBaseDataFrame):
         "HighBP",
         "HighChol",
         "CholCheck",
-        "SMOKE100",
-        "CVDSTRK3",
-        "HeartDiseaseorAttack",
-        "_TOTINDA",
+        "Diabetes",
         "Fruits",
         "Veggies",
         "HvyAlcoholConsump",
-        "HLTHPLN1",
-        "MEDCOST",
-        "GENHLTH",
         "MentHlth",
         "PhysHlth",
         "DiffWalk",
+        "SMOKE100",
+        "CVDSTRK3",
+        "_TOTINDA",
+        "HLTHPLN1",
+        "MEDCOST",
+        "GENHLTH",
         "SEX",
         "_AGEG5YR",
         "EDUCA",
@@ -78,7 +78,7 @@ class DiabetesL2Diabetes(DiabetesLBaseDataFrame):
         "HighBP",
         "HighChol",
         "CholCheck",
-        "HeartDiseaseorAttack",
+        "Diabetes",
         "Fruits",
         "Veggies",
         "HvyAlcoholConsump",
@@ -87,7 +87,7 @@ class DiabetesL2Diabetes(DiabetesLBaseDataFrame):
         "DiffWalk",
     ]
 
-    target_columns = ["Diabetes_binary"]
+    target_columns = ["HeartDiseaseorAttack"]
 
     task = "binary"
 
@@ -98,7 +98,7 @@ class DiabetesL2Diabetes(DiabetesLBaseDataFrame):
         self.test_idx = idx[int(len(idx) * 0.8) :]
 
     def raw_dataframe(self, train: bool = True) -> pd.DataFrame:
-        df = pd.read_csv(self.root / "diabetes-small/raw/diabetes_binary_health_indicators_BRFSS2015.csv")
+        df = pd.read_csv(self.root / "hdhi/heart_disease_health_indicators_BRFSS2015.csv")
         # be divided by 100 and then be rounded by 0
         df["BMI"] = df["BMI"] * 100
         # be changed 2 -> 0 and be deleted 7, 9

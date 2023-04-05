@@ -1,31 +1,31 @@
 import numpy as np
 import pandas as pd
 
-from .diabetesl_base import DiabetesLBaseDataFrame
+from .brfss_base import BRFSSBaseDataFrame
 
 
-class DiabetesL2HeartDisease2015(DiabetesLBaseDataFrame):
+class Diabetes(BRFSSBaseDataFrame):
     dim_out = 1
 
     all_columns = [
-        "HeartDiseaseorAttack",
+        "Diabetes_binary",
         "HighBP",
         "HighChol",
         "CholCheck",
-        "Diabetes",
+        "BMI",
+        "SMOKE100",
+        "CVDSTRK3",
+        "HeartDiseaseorAttack",
+        "_TOTINDA",
         "Fruits",
         "Veggies",
         "HvyAlcoholConsump",
-        "MentHlth",
-        "PhysHlth",
-        "DiffWalk",
-        "_BMI5",
-        "SMOKE100",
-        "CVDSTRK3",
-        "_TOTINDA",
         "HLTHPLN1",
         "MEDCOST",
         "GENHLTH",
+        "MentHlth",
+        "PhysHlth",
+        "DiffWalk",
         "SEX",
         "_AGEG5YR",
         "EDUCA",
@@ -40,19 +40,19 @@ class DiabetesL2HeartDisease2015(DiabetesLBaseDataFrame):
         "HighBP",
         "HighChol",
         "CholCheck",
-        "Diabetes",
+        "SMOKE100",
+        "CVDSTRK3",
+        "HeartDiseaseorAttack",
+        "_TOTINDA",
         "Fruits",
         "Veggies",
         "HvyAlcoholConsump",
-        "MentHlth",
-        "PhysHlth",
-        "DiffWalk",
-        "SMOKE100",
-        "CVDSTRK3",
-        "_TOTINDA",
         "HLTHPLN1",
         "MEDCOST",
         "GENHLTH",
+        "MentHlth",
+        "PhysHlth",
+        "DiffWalk",
         "SEX",
         "_AGEG5YR",
         "EDUCA",
@@ -78,7 +78,7 @@ class DiabetesL2HeartDisease2015(DiabetesLBaseDataFrame):
         "HighBP",
         "HighChol",
         "CholCheck",
-        "Diabetes",
+        "HeartDiseaseorAttack",
         "Fruits",
         "Veggies",
         "HvyAlcoholConsump",
@@ -87,7 +87,7 @@ class DiabetesL2HeartDisease2015(DiabetesLBaseDataFrame):
         "DiffWalk",
     ]
 
-    target_columns = ["HeartDiseaseorAttack"]
+    target_columns = ["Diabetes_binary"]
 
     task = "binary"
 
@@ -98,7 +98,7 @@ class DiabetesL2HeartDisease2015(DiabetesLBaseDataFrame):
         self.test_idx = idx[int(len(idx) * 0.8) :]
 
     def raw_dataframe(self, train: bool = True) -> pd.DataFrame:
-        df = pd.read_csv(self.root / "heart_disease/heart_disease_health_indicators_BRFSS2015.csv")
+        df = pd.read_csv(self.root / "diabetes/diabetes_binary_health_indicators_BRFSS2015.csv")
         # be divided by 100 and then be rounded by 0
         df["BMI"] = df["BMI"] * 100
         # be changed 2 -> 0 and be deleted 7, 9
@@ -141,12 +141,3 @@ class DiabetesL2HeartDisease2015(DiabetesLBaseDataFrame):
         else:
             df = df.iloc[self.test_idx]
         return df
-
-
-if __name__ == "__main__":
-    from omegaconf import OmegaConf
-
-    config = OmegaConf.create({"data_dir": None, "fine_num": 100})
-    dataset = DiabetesL2HeartDisease2015(config, "datasets/")
-    dfs = dataset.processed_dataframes(test_size=0.1)
-    print(dfs)

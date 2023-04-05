@@ -4,7 +4,7 @@ defaults:
   - pre_conf: tabret
   - scheduler: cosine
 
-data: DiabetesL
+data: BRFSS
 data_dir: datasets
 
 epochs: 1000
