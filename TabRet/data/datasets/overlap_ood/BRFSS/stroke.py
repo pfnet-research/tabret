@@ -1,10 +1,10 @@
 import numpy as np
 import pandas as pd
 
-from .diabetesl_base import DiabetesLBaseDataFrame
+from .brfss_base import BRFSSBaseDataFrame
 
 
-class DiabetesL2Stroke(DiabetesLBaseDataFrame):
+class Stroke(BRFSSBaseDataFrame):
     dim_out = 1
 
     all_columns = [
@@ -94,12 +94,3 @@ class DiabetesL2Stroke(DiabetesLBaseDataFrame):
         else:
             df = df.iloc[self.test_idx]
         return df
-
-
-if __name__ == "__main__":
-    from omegaconf import OmegaConf
-
-    config = OmegaConf.create({"data_dir": None, "fine_num": 100})
-    dataset = DiabetesL2Stroke(config, "datasets/")
-    dfs = dataset.processed_dataframes(test_size=0.1)
-    print(dfs)

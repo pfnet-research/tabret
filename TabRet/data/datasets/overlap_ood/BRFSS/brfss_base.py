@@ -4,7 +4,7 @@ import pandas as pd
 from ..ood_base import OODBaseDataFrame
 
 
-class DiabetesLBaseDataFrame(OODBaseDataFrame):
+class BRFSSBaseDataFrame(OODBaseDataFrame):
     pre_target_columns = ["Diabetes"]
 
     def __init__(self, config, download: bool = False) -> None:
@@ -14,7 +14,7 @@ class DiabetesLBaseDataFrame(OODBaseDataFrame):
         self.pre_train_idx = idx[: int(len(idx) * 0.8)]
 
     def raw_pre_dataframe(self) -> pd.DataFrame:
-        df = pd.read_csv(self.root / "diabetesl/all.csv")
+        df = pd.read_csv(self.root / "brfss/all.csv")
         self.pre_all_columns = list(df.columns)
         self.pre_categorical_columns = list(
             df.loc[:, (df.dtypes == "object") | (df.dtypes == "int64")].drop("Diabetes", axis=1).columns

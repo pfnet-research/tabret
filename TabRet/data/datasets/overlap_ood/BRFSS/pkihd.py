@@ -1,10 +1,10 @@
 import numpy as np
 import pandas as pd
 
-from .diabetesl_base import DiabetesLBaseDataFrame
+from .brfss_base import BRFSSBaseDataFrame
 
 
-class DiabetesL2HeartDisease2020(DiabetesLBaseDataFrame):
+class PKIHD(BRFSSBaseDataFrame):
     dim_out = 1
 
     all_columns = [
@@ -87,7 +87,7 @@ class DiabetesL2HeartDisease2020(DiabetesLBaseDataFrame):
         self.test_idx = idx[int(len(idx) * 0.8) :]
 
     def raw_dataframe(self, train: bool = True) -> pd.DataFrame:
-        df = pd.read_csv(self.root / "heart_disease/heart_2020_cleaned.csv")
+        df = pd.read_csv(self.root / "pkihd/heart_2020_cleaned.csv")
         df["_BMI5"] = df["BMI"] * 100
         df["SMOKE100"] = df["Smoking"].replace({"Yes": 1, "No": 2})
         df["CVDSTRK3"] = df["Stroke"].replace({"Yes": 1, "No": 2})
@@ -123,12 +123,3 @@ class DiabetesL2HeartDisease2020(DiabetesLBaseDataFrame):
         else:
             df = df.iloc[self.test_idx]
         return df
-
-
-if __name__ == "__main__":
-    from omegaconf import OmegaConf
-
-    config = OmegaConf.create({"data_dir": None, "fine_num": 100})
-    dataset = DiabetesL2HeartDisease2020(config, "datasets/")
-    dfs = dataset.processed_dataframes(test_size=0.1)
-    print(dfs)

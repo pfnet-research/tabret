@@ -4,7 +4,7 @@ defaults:
   - fine_conf: ret/tabret
   - scheduler: cosine_fine
 
-data: DiabetesL2Diabetes
+data: Diabetes
 data_dir: datasets
 
 epochs: 200

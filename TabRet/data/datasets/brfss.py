@@ -8,7 +8,7 @@ from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder, QuantileTransfo
 from .tabular_dataframe import TabularDataFrame
 
 
-class DiabetesL(TabularDataFrame):
+class BRFSS(TabularDataFrame):
     dim_out = 1
 
     target_columns = ["Diabetes"]
@@ -26,7 +26,7 @@ class DiabetesL(TabularDataFrame):
         pass
 
     def raw_dataframe(self, train: bool = True) -> pd.DataFrame:
-        df = pd.read_csv(self.root / "diabetesl/all.csv")
+        df = pd.read_csv(self.root / "brfss/all.csv")
         self.all_columns = list(df.columns)
         self.categorical_columns = list(
             df.loc[:, (df.dtypes == "object") | (df.dtypes == "int64")].drop("Diabetes", axis=1).columns
@@ -102,12 +102,3 @@ class DiabetesL(TabularDataFrame):
             print(f"{k}: {len(v)}", end=", ")
         print()
         return dfs
-
-
-if __name__ == "__main__":
-    from omegaconf import OmegaConf
-
-    config = OmegaConf.create({"data_dir": None, "fine_num": 100})
-    dataset = DiabetesL(config, "datasets/")
-    dfs = dataset.processed_dataframes(test_size=0.1)
-    print(dfs)
